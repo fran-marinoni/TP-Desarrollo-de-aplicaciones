@@ -1,20 +1,21 @@
+// ============================================================
+// App.tsx  (root entry point)
+// Wraps navigation with all context providers
+// ============================================================
+
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { GameConfigProvider } from './src/context/GameConfigContext';
+import { StatsProvider } from './src/context/StatsContext';
+import { AppNavigator } from './src/navigation/AppNavigator';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GameConfigProvider>
+      <StatsProvider>
+        <StatusBar style="light" backgroundColor="#0F0E17" />
+        <AppNavigator />
+      </StatsProvider>
+    </GameConfigProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
